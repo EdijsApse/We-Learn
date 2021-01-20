@@ -1,0 +1,114 @@
+footer {
+    padding: 2.5em 0.9em;
+    background-color: $darkGrey;
+    .footer-logo {
+        width: 160px;
+        margin: 0px auto;
+    }
+    .quote {
+        p {
+            font-size: 1.1em;
+            font-style: italic;
+            color: #FFF;
+            font-family: $textFont;
+            margin-bottom: 0px;
+            margin-top: 10px;
+            font-weight: 100;
+            position: relative;
+            margin-top: 2em;
+            &::before {
+                position: relative;
+                color: #FFF;
+                top: 10px;
+                line-height: 0px;
+                content: "“";
+                font-size: 3em;
+                font-family: 'Times New Roman', Times, serif;
+            }
+            &::after {
+                position: relative;
+                bottom: -5px;
+                right: -4px;
+                line-height: 0px;
+                content: "„";
+                font-size: 3em;
+                font-family: 'Times New Roman', Times, serif;
+            }
+            &.author {
+                margin-top: 0.9em;
+                margin-right: 1.8em;
+                font-size: 1.5em;
+                text-align: right;
+                font-weight: 500;
+                &::before {
+                    display: none;
+                }
+                &::after {
+                    display: none;
+                }
+            }
+        }
+    }
+    .footer-navbar {
+        display: flex;
+        justify-content: space-around;
+        padding: 0em 2em;
+        .navbar-nav {
+            .nav-item {
+                .nav-link {
+                    color: #FFF;
+                    font-family: $textFont;
+                    font-size: 1.2em;
+                    font-weight: 300;
+                }
+            }
+        }
+    }
+    .subscribe {
+        .subscribe-control {
+            display: flex;
+            .form-group {
+                flex-grow: 1;
+                margin-bottom: 0px;
+                .form-control {
+                    padding: 0.5em 1em;
+                    height: 100%;
+                    font-family: $textFont;
+                    font-size: 1em;
+                    border: none;
+                    transition: all 0.3s;
+                    &:focus {
+                        border: none;
+                        box-shadow: 0px 0px 1px 2px $skyBlue;
+                        transition: all 0.3s;
+                    }
+                }
+            }
+            .btn-subscribe {
+                font-family: $headingFont;
+                color: #FFF;
+                margin-left: 1.5em;
+                outline: none;
+                border: none;
+                font-size: 1.2em;
+                border-radius: 5px;
+                padding: 0.5em 2em;
+                text-decoration: none;
+                background-color: $brightSkyBlue;
+                transition: all 0.3s;
+                &:hover {
+                    background-color: $skyBlue;
+                }
+            }
+        }
+    }
+    .copyrights {
+        p {
+            font-size: 1.2em;
+            font-weight: 300;
+            color: #FFF;
+            font-family: $textFont;
+            margin-bottom: 0px;
+        }
+    }
+}
