@@ -1,0 +1,18 @@
+form {
+    .form-group {
+        .form-control {
+            padding: 0.8em 1.2em;
+            height: auto;
+            color: $brightGrey;
+            font-family: $textFont;
+            font-size: 1.1em;
+            &::placeholder {
+                color: $closeWhite;
+            }
+            &:focus {
+                box-shadow: none;
+                border: 1px solid $brightSkyBlue;
+            }
+        }
+    }
+}

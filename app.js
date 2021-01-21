@@ -16,6 +16,10 @@ app.get('/login', (req, res) => {
     res.render('auth/login');
 })
 
+app.get('/register', (req, res) => {
+    res.render('auth/register');
+})
+
 app.listen(3000, () => {
     console.log('App running in http://localhost:3000');
 })
