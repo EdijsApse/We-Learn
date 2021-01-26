@@ -7,21 +7,36 @@
                 <i class="fas fa-pencil-alt"></i>
             </div>
             <h1>Create Account</h1>
-            <form>
+            <form method="POST" action="/register">
                 <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Name" />
+                    <input type="text" class="form-control" value="<%= form.oldInput('name') %>" name="name" placeholder="Your name" />
+                    <% if (form.hasError('name')) { %>
+                        <%= form.getError('name') %> 
+                    <% } %>
                 </div>
                 <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Surname" />
+                    <input type="text" class="form-control" value="<%= form.oldInput('surname') %>" name="surname" placeholder="Your surname" />
+                    <% if (form.hasError('surname')) { %>
+                        <%= form.getError('surname') %> 
+                    <% } %>
                 </div>
                 <div class="form-group">
-                    <input type="email" class="form-control" placeholder="Email address" />
+                    <input type="text" class="form-control" value="<%= form.oldInput('email') %>" name="email" placeholder="Your email address" />
+                    <% if (form.hasError('email')) { %>
+                        <%= form.getError('email') %> 
+                    <% } %>
                 </div>
                 <div class="form-group">
-                    <input type="password" class="form-control" placeholder="Password" />
+                    <input type="password" class="form-control" value="<%= form.oldInput('password') %>" name="password" placeholder="Your password" />
+                    <% if (form.hasError('password')) { %>
+                        <%= form.getError('password') %> 
+                    <% } %>
                 </div>
                 <div class="form-group">
-                    <input type="password" class="form-control" placeholder="Confirm Password" />
+                    <input type="password" class="form-control" value="<%= form.oldInput('password_confirmation') %>" name="password_confirmation" placeholder="Confirm password" />
+                    <% if (form.hasError('password_confirmation')) { %>
+                        <%= form.getError('password_confirmation') %> 
+                    <% } %>
                 </div>
                 <div class="d-flex justify-content-between align-items-center form-buttons">
                     <button type="submit" class="btn btn-primary">Register</button>
