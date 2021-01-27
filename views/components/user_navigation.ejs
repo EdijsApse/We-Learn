@@ -1,0 +1,16 @@
+<ul class="navbar-nav ml-auto">
+    <li class="dropdown">
+        <a class="nav-link dropdown-toggle" href="" id="user-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <%= user.name %>
+        </a>
+        <div class="dropdown-menu" aria-labelledby="user-dropdown">
+            <div class="img-wrapper">
+                <img src="/user.png" class="user-img" />
+            </div>
+            <h5><%= user.fullname %> </h5>
+            <form action="/logout" method="POST">
+                <button type="submit" class="btn btn-primary"><i class="fas fa-power-off"></i><span>Logout</span></button>
+            </form>
+        </div>
+    </li>
+</ul>

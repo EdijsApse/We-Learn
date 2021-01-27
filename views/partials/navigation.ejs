@@ -28,13 +28,17 @@
                 <a class="nav-link" href="#">Item 5</a>
             </li>
       </ul>
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
-            <a class="btn btn-primary" href="/login">Login</a>
-        </li>
-        <li class="nav-item">
-            <a class="btn btn-secondary" href="/register">Sign Up</a>
-        </li>
-      </ul>
+      <% if (user) { %>
+        <%- partial('./components/user_navigation') %>
+      <% } else { %>
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="btn btn-primary" href="/login">Login</a>
+            </li>
+            <li class="nav-item">
+                <a class="btn btn-secondary" href="/register">Sign Up</a>
+            </li>
+        </ul>
+      <% } %> 
     </div>
 </nav>

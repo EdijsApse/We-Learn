@@ -5,7 +5,6 @@ module.exports.validateUser = (req, res, next) => {
 
     if (error) {
         const { originalUrl, body } = req;
-        console.log(error);
         const errors = error.details.map(e => {
             return {
                 field: e.context.key,
