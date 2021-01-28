@@ -1,4 +1,5 @@
 const Joi = require('joi');
+const categories = ['Web Development', 'Programming languages', 'IT'];
 
 module.exports.userSchema = Joi.object({
     name: Joi.string().required().messages({
@@ -19,3 +20,17 @@ module.exports.userSchema = Joi.object({
         'any.only': 'Passwords doesnt match'
     })
 });
+
+module.exports.postSchema = Joi.object({
+    title: Joi.string().required().messages({
+        'string.empty': 'Post title is required'
+    }),
+    body: Joi.string().required().min(100).messages({
+        'string.empty': 'Post body is required',
+        'string.min': 'Post content should be atleast 100 characters'
+    }),
+    category: Joi.number().required().valid(...categories.keys()).messages({
+        'number.required': 'Category is required',
+        'any.only': 'Please select category from list'
+    })
+})

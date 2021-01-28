@@ -1,10 +1,11 @@
-const { userSchema } = require('./joiSchemas');
+const { userSchema, postSchema } = require('./joiSchemas');
 
-module.exports.validateUser = (req, res, next) => {
-    const { error } = userSchema.validate(req.body, {abortEarly: false});
+const handleValidation = (req, res, next, schema) => {
+    const { error } = schema.validate(req.body, { abortEarly: false });
 
     if (error) {
-        const { originalUrl, body } = req;
+        const { body } = req;
+        const backUrl = req.header('Referer');
         const errors = error.details.map(e => {
             return {
                 field: e.context.key,
@@ -15,8 +16,16 @@ module.exports.validateUser = (req, res, next) => {
         req.flash('errors', errors);
         req.flash('inputs', body);
 
-        return res.redirect(originalUrl);
+        return res.redirect(backUrl);
     }
     
     next();
+}
+
+module.exports.validateUser = (req, res, next) => {
+    return handleValidation(req, res, next, userSchema);
+}
+
+module.exports.validatePost = (req, res, next) => {
+    return handleValidation(req, res, next, postSchema);
 }

@@ -1,5 +1,11 @@
 form {
     .form-group {
+        label {
+            font-family: $textFont;
+            color: $darkGrey;
+            font-size: 1.2em;
+            margin-top: 0.5em;
+        }
         .form-control {
             padding: 0.8em 1.2em;
             height: auto;
@@ -12,6 +18,44 @@ form {
             &:focus {
                 box-shadow: none;
                 border: 1px solid $brightSkyBlue;
+            }
+        }
+        .image-select {
+            position: relative;
+            box-sizing: content-box;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            padding: 2em;
+            min-height: 155px;
+            max-height: 250px;
+            box-shadow: 0px 0px 3px 0px $closeWhite;
+            border-radius: 5px;
+            background-color: $brightWhite;
+            opacity: 0.8;
+            cursor: pointer;
+            transition: all 0.3s;
+            &:hover {
+                box-shadow: 0px 0px 6px 1px $closeWhite;
+                opacity: 1;
+            }
+            i {
+                font-size: 7em;
+                color: $closeWhite;
+                transition: all 0.3s;
+            }
+            img {
+                border-radius: 2px;
+                max-width: 190px;
+                transition: all 0.3s;
+            }
+
+            .btn-danger {
+                margin-top: 1em;
+                font-size: 0.8em;
+                transition: all 0.3s;
             }
         }
     }

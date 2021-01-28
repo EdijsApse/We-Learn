@@ -13,6 +13,7 @@ const { errorhandlerMiddleware } = require('./helpers/errorHandlers');
 const setLocals = require('./helpers/setLocals');
 
 const authRoutes = require('./routes/auth');
+const postRoutes = require('./routes/post');
 
 const sessionConfig = {
     secret: 'temp-secret', //@todo Change to .env variable and real secret
@@ -64,11 +65,8 @@ passport.deserializeUser(User.deserializeUser());
 
 app.use(setLocals)
 
-app.get('/', (req, res) => {
-    res.send('App');
-})
-
 app.use('/', authRoutes);
+app.use('/post', postRoutes);
 
 /**
  * Error handler for thrown errors
