@@ -1,4 +1,34 @@
 <%- layout('./layout/main') %>
 
-<h1>Posts</h1>
-<a href="/post/new">Create</a>
+<div class="container">
+    <div class="row page">
+        <div class="col-12">
+            <div class="d-flex justify-content-between align-items-center">
+                <h1 class="page-title">Posts</h1>
+                <a class="btn btn-primary" href="post/new">Create</a>
+            </div>
+        </div>
+        <div class="col-12 post-list">
+            <div class="row">
+                <% for(let post of posts) { %>
+                    <div class="col-lg-4">
+                        <div class="d-flex flex-column justify-content-center post-item">
+                            <div class="w-100 img-wrapper">
+                                <img src="<%= post.image %>" class="img-fluid" />    
+                            </div>
+                            <div class="post-details">
+                                <h2><%= post.title %></h2>
+                                <h3><%= post.category_name %></h3>
+                                <p><%= post.body_intro %></p>
+                                <div class="d-flex justify-content-between align-items-center post-footer">
+                                    <p class="mb-0">By <%= post.user.fullname %></p>
+                                    <a href="<%= post.url %>" class="post-link">Read More</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <% }%>
+            </div>
+        </div>
+    </div>
+</div>

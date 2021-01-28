@@ -20,7 +20,6 @@ const postSchema = new mongoose.Schema({
         type: Number,
         enum: [...Categories.getCategoriesId()]
     },
-    
     create_time: {
         type: Date,
         default: Date.now()
@@ -29,6 +28,18 @@ const postSchema = new mongoose.Schema({
 
 postSchema.virtual('url').get(function() {
     return `/post/${this._id}`;
+});
+
+postSchema.virtual('image').get(function() {
+    return `https://source.unsplash.com/random/500x500`;
+});
+
+postSchema.virtual('category_name').get(function() {
+    return Categories.getCategoryName(this.category);
+});
+
+postSchema.virtual('body_intro').get(function() {
+    return this.body.slice(0, 100) + ' ...'
 });
 
 

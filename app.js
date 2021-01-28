@@ -68,6 +68,10 @@ app.use(setLocals)
 app.use('/', authRoutes);
 app.use('/post', postRoutes);
 
+app.get('/', (req, res) => {
+    res.render('home')
+})
+
 /**
  * Error handler for thrown errors
  */

@@ -3,7 +3,10 @@ class ImageSelect {
         this.elementClass = elementClass;
 
         this.selectElement = this._findSelectElement();
-        this.inputElement = this._findInputElement();
+        
+        if (this.selectElement) {
+            this.inputElement = this._findInputElement();
+        }
     }
 
     addEvents() {

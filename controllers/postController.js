@@ -26,8 +26,11 @@ module.exports.delete = (req, res) => {
 
 }
 
-module.exports.index = (req, res) => {
-    res.render('post/index')
+module.exports.index = async (req, res) => {
+    const posts = await Post.find().populate('user');
+    res.render('post/index', {
+        posts
+    });
 }
 
 module.exports.edit = (req, res) => {
