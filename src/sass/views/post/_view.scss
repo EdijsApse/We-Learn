@@ -48,21 +48,54 @@
 
     .post-comment {
         margin-top: 2em;
+        .no-comments {
+            padding: 2em 0em;
+        }
         h3 {
             font-size: 1.5em;
             &::after {
                 content: "";
                 height: 4px;
                 background-color: $skyBlue;
-                width: 100px;
+                width: 100%;
                 display: block;
                 margin-top: 3px;
                 margin-bottom: 0.5em;
             }
             &.fomr-title {
                 &::after {
-                    width: 100%;
                     margin-bottom: 0em;
+                }
+            }
+        }
+        .comment {
+            border-radius: 5px;
+            margin-bottom: 1.8em;
+            &:first-of-type {
+                margin-top: 2em;
+            }
+            .comment-author-image {
+                margin-top: 0.2em;
+                min-width: 50px;
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+                box-shadow: 0px 0px 0px 5px $closeWhite;
+                overflow: hidden;
+                margin-right: 1em;
+            }
+            .comment-content {
+                background-color: $brightWhite;
+                box-shadow: 0px 0px 3px 0px $closeWhite;
+                padding: 0.8em 0.6em;
+                border-radius: 4px;
+                h5 {
+                    font-size: 1.1em;
+                    margin-bottom: 0.8em;
+                }
+                p {
+                    color: $brightGrey;
+                    margin-bottom: 0px;
                 }
             }
         }

@@ -15,8 +15,13 @@ module.exports.new = (req, res) => {
 }
 
 module.exports.show = async (req, res) => {
-    const post = await Post.findById(req.params.id).populate('user');
-    res.render('post/view', {post})
+    const post = await Post.findById(req.params.id).populate({
+        path: 'comments',
+        populate: {
+            path: 'user',
+        }
+    }).populate('user');
+    res.render('post/view', { post })
 }
 
 module.exports.update = (req, res) => {

@@ -23,7 +23,11 @@ const postSchema = new mongoose.Schema({
     create_time: {
         type: Date,
         default: Date.now()
-    }
+    },
+    comments: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Comment'
+    }]
 });
 
 postSchema.virtual('url').get(function() {

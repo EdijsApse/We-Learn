@@ -28,16 +28,39 @@
                 <div class="post-comment">
                     <div class="row">
                         <div class="col-12">
-                            <h3>Comments</h3>
+                            <div class="d-flex justify-content-center">
+                                <h3>Comments</h3>
+                            </div>
+                            <% if (!post.comments.length) { %>
+                                <div class="d-flex align-items-center flex-column no-comments">
+                                    <h4>No comments</h4>
+                                    <p>Be first to comment <%= post.title %> </p>
+                                </div>
+                            <% } else { %>
+                                <% for( let comment of post.comments ) { %>
+                                    <div class="d-flex comment">
+                                        <div class="comment-author-image">
+                                            <img src="<%= comment.user.image %>" class="img-fluid">
+                                        </div>
+                                        <div class="comment-content">
+                                            <h5><%= comment.user.fullname %></h5>
+                                            <p><%= comment.body %> </p>
+                                        </div>
+                                    </div>
+                                <% } %>
+                            <% } %>
                         </div>
                         <div class="col-8 mx-auto">
                             <div class="d-flex justify-content-center">
                                 <h3 class="fomr-title">Add comment</h3>
                             </div>
-                            <form method="POST">
+                            <form method="POST" action="<%= `${post.url}` %>">
                                 <div class="form-group">
                                     <label for="comment">Comment</label>
-                                    <textarea name="comment" class="form-control" placeholder="Write comment"></textarea>
+                                    <textarea name="body" class="form-control" placeholder="Write comment"><%= form.oldInput('body') %> </textarea>
+                                    <% if (form.hasError('body')) { %>
+                                        <%= form.getError('body') %> 
+                                    <% } %>
                                 </div>
                                 <div class="d-flex justify-content-center">
                                     <button type="submit" class="btn btn-primary">Comment</button>

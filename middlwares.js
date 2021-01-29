@@ -1,4 +1,4 @@
-const { userSchema, postSchema } = require('./joiSchemas');
+const { userSchema, postSchema, commentSchema } = require('./joiSchemas');
 
 const handleValidation = (req, res, next, schema) => {
     const { error } = schema.validate(req.body, { abortEarly: false });
@@ -28,4 +28,8 @@ module.exports.validateUser = (req, res, next) => {
 
 module.exports.validatePost = (req, res, next) => {
     return handleValidation(req, res, next, postSchema);
+}
+
+module.exports.validateComment = (req, res, next) => {
+    return handleValidation(req, res, next, commentSchema);
 }

@@ -14,6 +14,7 @@ const setLocals = require('./helpers/setLocals');
 
 const authRoutes = require('./routes/auth');
 const postRoutes = require('./routes/post');
+const commentRoutes = require('./routes/comment');
 
 const sessionConfig = {
     secret: 'temp-secret', //@todo Change to .env variable and real secret
@@ -67,6 +68,7 @@ app.use(setLocals)
 
 app.use('/', authRoutes);
 app.use('/post', postRoutes);
+app.use('/post/:post_id', commentRoutes);
 
 app.get('/', (req, res) => {
     res.render('home')

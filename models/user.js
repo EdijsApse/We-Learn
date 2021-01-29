@@ -20,6 +20,10 @@ userSchema.virtual('fullname').get(function() {
     return `${this.name} ${this.surname}`;
 });
 
+userSchema.virtual('image').get(function() {
+    return '/user.png';
+})
+
 userSchema.plugin(passportLocalMongoose, {
     usernameField: 'email'
 });

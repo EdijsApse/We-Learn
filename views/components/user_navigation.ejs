@@ -5,7 +5,7 @@
         </a>
         <div class="dropdown-menu" aria-labelledby="user-dropdown">
             <div class="img-wrapper">
-                <img src="/user.png" class="user-img" />
+                <img src="<%= user.image %> " class="user-img" />
             </div>
             <h5><%= user.fullname %> </h5>
             <form action="/logout" method="POST">

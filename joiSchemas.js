@@ -34,3 +34,10 @@ module.exports.postSchema = Joi.object({
         'any.only': 'Please select category from list'
     })
 })
+
+module.exports.commentSchema = Joi.object({
+    'body': Joi.string().required().min(10).messages({
+        'string.empty': 'Comment body is required',
+        'string.min': 'Comment should be atleast 10 characters long'
+    })
+});
