@@ -14,8 +14,9 @@ module.exports.new = (req, res) => {
     res.render('post/create');
 }
 
-module.exports.show = (req, res) => {
-    res.send('Post view');
+module.exports.show = async (req, res) => {
+    const post = await Post.findById(req.params.id).populate('user');
+    res.render('post/view', {post})
 }
 
 module.exports.update = (req, res) => {

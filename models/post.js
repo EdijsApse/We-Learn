@@ -42,5 +42,11 @@ postSchema.virtual('body_intro').get(function() {
     return this.body.slice(0, 100) + ' ...'
 });
 
+postSchema.virtual('date_created').get(function() {
+    const date = new Date(this.create_time);
+
+    return `${date.getDate()} - ${date.getMonth() + 1} - ${date.getFullYear()}`;
+})
+
 
 module.exports = mongoose.model('Post', postSchema);

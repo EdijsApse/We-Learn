@@ -1,0 +1,52 @@
+<%- layout('./layout/main') %>
+<div class="container">
+    <div class="row page">
+        <div class="col-12 post-view">
+            <div class="row">
+                <div class="col-12">
+                    <div class="post-image-wrapper">
+                        <img class="img-fluid" src="<%= post.image %>" />
+                    </div>
+                </div>
+                <div class="col-10 mx-auto post-content">
+                    <h1 class="page-title"><%= post.title %></h1>
+                    <h2 class="post-category"><%= post.category_name %></h2>
+                    <div class="post-body">
+                        <div class="d-inline-block float-right post-image">
+                            <img src="<%= post.image %>" class="img-fluid"/>
+                        </div>
+                        <p><%= post.body %></p>
+                        <div class="d-flex justify-content-between align-items-center post-footer">
+                            <p class="author">Create By <%= post.user.fullname %> </p>
+                            <p>Created: <%= post.date_created %> </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-10 mx-auto">
+                <div class="post-comment">
+                    <div class="row">
+                        <div class="col-12">
+                            <h3>Comments</h3>
+                        </div>
+                        <div class="col-8 mx-auto">
+                            <div class="d-flex justify-content-center">
+                                <h3 class="fomr-title">Add comment</h3>
+                            </div>
+                            <form method="POST">
+                                <div class="form-group">
+                                    <label for="comment">Comment</label>
+                                    <textarea name="comment" class="form-control" placeholder="Write comment"></textarea>
+                                </div>
+                                <div class="d-flex justify-content-center">
+                                    <button type="submit" class="btn btn-primary">Comment</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
