@@ -6,6 +6,10 @@ form {
             font-size: 1.2em;
             margin-top: 0.5em;
         }
+        textarea {
+            min-height: 150px;
+            resize: none;
+        }
         .form-control {
             padding: 0.8em 1.2em;
             height: auto;

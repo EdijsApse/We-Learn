@@ -23,6 +23,12 @@ module.exports.catchAsyncError = (fn) => {
 module.exports.errorhandlerMiddleware = (err, req, res, next) => {
     const { status = 500, message = 'Something went wrong!' } = err;
     const { body } = req;
+
+    if (status === 404) {
+        return res.status(status).render('error/404', {
+            status, message
+        });
+    }
     req.flash('error', message);
     req.flash('inputs', body);
     return res.status(status).redirect('back');

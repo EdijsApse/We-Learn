@@ -1,4 +1,5 @@
 const Post = require('../models/post');
+const ExpressError = require('../helpers/ExpressError');
 
 module.exports.create = async (req, res) => {
     const { title, body, category } = req.body;
@@ -14,13 +15,18 @@ module.exports.new = (req, res) => {
     res.render('post/create');
 }
 
-module.exports.show = async (req, res) => {
+module.exports.show = async (req, res, next) => {
     const post = await Post.findById(req.params.id).populate({
         path: 'comments',
         populate: {
             path: 'user',
         }
     }).populate('user');
+
+    if (!post) {
+        return next(new ExpressError(404, 'Post not found!'));
+    }
+
     res.render('post/view', { post })
 }
 
