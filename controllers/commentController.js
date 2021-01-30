@@ -3,6 +3,9 @@ const Post = require('../models/post');
 const ExpressError = require('../helpers/ExpressError');
 
 module.exports.delete = async (req, res) => {
+    const { id, post_id } = req.params;
+    await Comment.findByIdAndDelete(id);
+    res.redirect(`/post/${post_id}`);
 }
 
 /**

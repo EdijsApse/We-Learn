@@ -24,7 +24,7 @@ module.exports.errorhandlerMiddleware = (err, req, res, next) => {
     const { status = 500, message = 'Something went wrong!' } = err;
     const { body } = req;
 
-    if (status === 404) {
+    if (status === 404 || status === 403) {
         return res.status(status).render('error/404', {
             status, message
         });

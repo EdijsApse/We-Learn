@@ -19,5 +19,17 @@ const commentSchema = new mongoose.Schema({
     }
 });
 
+commentSchema.virtual('url').get(function() {
+    return `/post/${this.post}/${this._id}`;
+});
+
+commentSchema.methods.isAuthor = function(user) {
+    if (!user) return false;
+
+    return this.user._id.equals(user._id);
+};
+
+
+
 
 module.exports = mongoose.model('Comment', commentSchema);

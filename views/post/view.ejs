@@ -48,9 +48,16 @@
                                         <div class="comment-author-image">
                                             <img src="<%= comment.user.image %>" class="img-fluid">
                                         </div>
-                                        <div class="comment-content">
+                                        <div class="position-relative comment-content">
                                             <h5><%= comment.user.fullname %></h5>
                                             <p><%= comment.body %> </p>
+                                            <% if (comment.isAuthor(user)) { %>
+                                                <form class="comment-delete-form" method="POST" action="<%= comment.url %>?_method=DELETE">
+                                                    <button class="btn btn-danger btn-delete">
+                                                        <i class="fas fa-trash"></i>
+                                                    </button>
+                                                </form>
+                                            <% } %>
                                         </div>
                                     </div>
                                 <% } %>

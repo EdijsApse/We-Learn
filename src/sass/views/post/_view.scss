@@ -97,6 +97,22 @@
                     color: $brightGrey;
                     margin-bottom: 0px;
                 }
+                .comment-delete-form {
+                    position: absolute;
+                    right: -25px;
+                    top: 0px;
+                    .btn-delete {
+                        min-width: auto;
+                        background-color: #FFF;
+                        box-shadow: none;
+                        border: none;
+                        padding: 0;
+                        i {
+                            color: $red;
+                            font-size: 1.1em;
+                        }
+                    }
+                }
             }
         }
     }
