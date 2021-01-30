@@ -20,6 +20,12 @@
                             <p class="author">Create By <%= post.user.fullname %> </p>
                             <p>Created: <%= post.date_created %> </p>
                         </div>
+                        <% if (post.isAuthor(user)) { %>
+                            <%= error %> 
+                            <form method="POST" action="<%= post.url %>?_method=DELETE">
+                                <button type="submit" class="btn btn-danger">Delete</button>
+                            </form>
+                        <% } %>
                     </div>
                 </div>
             </div>

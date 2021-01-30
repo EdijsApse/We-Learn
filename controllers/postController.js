@@ -34,8 +34,12 @@ module.exports.update = (req, res) => {
 
 }
 
-module.exports.delete = (req, res) => {
-
+module.exports.delete = async (req, res) => {
+    const { id } = req.params;
+    
+    await Post.findByIdAndDelete(id);
+    
+    return res.redirect('/post');
 }
 
 module.exports.index = async (req, res) => {

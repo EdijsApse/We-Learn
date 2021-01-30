@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Categories = require('./category');
+const Comment = require('./comment');
 
 const postSchema = new mongoose.Schema({
     title: {
@@ -52,5 +53,14 @@ postSchema.virtual('date_created').get(function() {
     return `${date.getDate()} - ${date.getMonth() + 1} - ${date.getFullYear()}`;
 })
 
+postSchema.methods.isAuthor = function(user) {
+    if (!user) return false;
+
+    return this.user._id.equals(user._id);
+};
+
+postSchema.post('findOneAndDelete', async function(post) {
+    await Comment.deleteMany({ post: post._id });
+})
 
 module.exports = mongoose.model('Post', postSchema);
