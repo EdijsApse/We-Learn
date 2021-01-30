@@ -1,22 +1,22 @@
 const express = require('express');
 const router = express.Router();
 const postController = require('../controllers/postController');
-const { validatePost } = require('../middlwares');
+const { validatePost, isAuth } = require('../middlwares');
 const { catchAsyncError } = require('../helpers/errorHandlers');
 
 router.route('/')
     .get(postController.index)
-    .post(validatePost, catchAsyncError(postController.create));
+    .post(isAuth, validatePost, catchAsyncError(postController.create));
 
 router.route('/new')
-    .get(postController.new);
+    .get(isAuth, postController.new);
 
 router.route('/:id')
     .get(postController.show)
-    .put(postController.update)
-    .delete(postController.delete);
+    .put(isAuth, postController.update)
+    .delete(isAuth, postController.delete);
 
 router.route('/:id/edit')
-    .get(postController.edit);
+    .get(isAuth, postController.edit);
 
 module.exports = router;

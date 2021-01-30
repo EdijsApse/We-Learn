@@ -1,18 +1,18 @@
 const express = require('express');
 const router = express.Router();
 const authController = require('../controllers/authController');
-const { validateUser } = require('../middlwares');
+const { validateUser, canAuth, isAuth } = require('../middlwares');
 const { catchAsyncError } = require('../helpers/errorHandlers');
 
 router.route('/login')
-    .post(authController.login)
-    .get(authController.renderLogin);
+    .post(canAuth, authController.login)
+    .get(canAuth, authController.renderLogin);
 
 router.route('/register')
-    .post(validateUser, catchAsyncError(authController.register))
-    .get(authController.renderRegister);
+    .post(canAuth, validateUser, catchAsyncError(authController.register))
+    .get(canAuth, authController.renderRegister);
 
 router.route('/logout')
-    .post(authController.logout);
+    .post(isAuth, authController.logout);
 
 module.exports = router;

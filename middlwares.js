@@ -22,6 +22,22 @@ const handleValidation = (req, res, next, schema) => {
     next();
 }
 
+module.exports.isAuth = (req, res, next) => {
+    if (req.user) {
+        return next();
+    }
+
+    res.redirect('/login');
+}
+
+module.exports.canAuth = (req, res, next) => {
+    if (!req.user) {
+        return next();
+    }
+
+    res.redirect('/');
+}
+
 module.exports.validateUser = (req, res, next) => {
     return handleValidation(req, res, next, userSchema);
 }
