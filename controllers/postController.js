@@ -30,8 +30,13 @@ module.exports.show = async (req, res, next) => {
     res.render('post/view', { post })
 }
 
-module.exports.update = (req, res) => {
+module.exports.update = async (req, res) => {
+    const { id } = req.params;
+    const { body, title } = req.body;
 
+    const post = await Post.findByIdAndUpdate(id, { body, title })
+
+    return res.redirect(post.url);
 }
 
 module.exports.delete = async (req, res) => {
@@ -49,6 +54,13 @@ module.exports.index = async (req, res) => {
     });
 }
 
-module.exports.edit = (req, res) => {
+module.exports.edit = async (req, res, next) => {
+    const { id } = req.params;
+    const post = await Post.findById(id);
 
+    if (!post) {
+        return next(new ExpressError(404, 'Post not found!'));
+    }
+
+    res.render('post/update', {post});
 }

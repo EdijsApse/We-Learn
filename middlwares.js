@@ -53,7 +53,7 @@ module.exports.validateComment = (req, res, next) => {
     return handleValidation(req, res, next, commentSchema);
 }
 
-module.exports.canDeletePost = async (req, res, next) => {
+module.exports.isAuthor = async (req, res, next) => {
     const { id } = req.params;
     const { _id } = req.user;
 

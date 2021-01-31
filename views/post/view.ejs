@@ -21,10 +21,12 @@
                             <p>Created: <%= post.date_created %> </p>
                         </div>
                         <% if (post.isAuthor(user)) { %>
-                            <%= error %> 
-                            <form method="POST" action="<%= post.url %>?_method=DELETE">
-                                <button type="submit" class="btn btn-danger">Delete</button>
-                            </form>
+                            <div class="d-flex">
+                                <a href="<%= post.url %>/edit" class="btn btn-primary mr-4">Edit</a>
+                                <form method="POST" action="<%= post.url %>?_method=DELETE">
+                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                </form>
+                            </div>
                         <% } %>
                     </div>
                 </div>

@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const postController = require('../controllers/postController');
-const { validatePost, isAuth, canDeletePost } = require('../middlwares');
+const { validatePost, isAuth, isAuthor } = require('../middlwares');
 const { catchAsyncError } = require('../helpers/errorHandlers');
 
 router.route('/')
@@ -13,10 +13,11 @@ router.route('/new')
 
 router.route('/:id')
     .get(postController.show)
-    .put(isAuth, postController.update)
-    .delete(isAuth, catchAsyncError(canDeletePost),  postController.delete);
+    .put(isAuth, catchAsyncError(isAuthor), validatePost, postController.update)
+    .delete(isAuth, catchAsyncError(isAuthor),  postController.delete);
 
 router.route('/:id/edit')
-    .get(isAuth, postController.edit);
+    .get(isAuth, catchAsyncError(postController.edit));
 
 module.exports = router;
+

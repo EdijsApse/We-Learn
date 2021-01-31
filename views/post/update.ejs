@@ -1,0 +1,65 @@
+<%- layout('./layout/main') %>
+
+<div class="container">
+    <div class="row page">
+        <div class="col-12">
+            <h1 class="page-title">Update</h1>
+            <form action="<%= post.url %>?_method=PUT" method="POST">
+                
+                <form action="/post" method="POST">
+                    <div class="row">
+                        <div class="col-12 col-lg-8">
+                            <div class="row">
+                                <div class="col-12 col-lg-10">
+                                    <div class="form-group">
+                                        <label for="title">Title</label>
+                                        <input id="title" type="text" class="form-control" value="<%= form.oldInput('title') ? form.oldInput('title') : post.title %>" placeholder="Enter title" name="title" />
+                                        <% if(form.hasError('title')){ %>
+                                            <%= form.getError('title') %> 
+                                        <% } %> 
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12 col-lg-10">
+                                    <div class="form-group">
+                                        <label for="category">Category</label>
+                                        <select id="category" class="form-control" name="category">
+                                            <option value="0">Web Development</option>
+                                            <option value="1">Technology</option>
+                                            <option value="2">Programming language</option>
+                                        </select>
+                                        <% if(form.hasError('category')){ %>
+                                            <%= form.getError('category') %> 
+                                        <% } %> 
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12 col-lg-12">
+                                    <div class="form-group">
+                                        <label for="body">Content</label>
+                                        <textarea id="body" name="body" class="form-control" placeholder="Create post content"><%= form.oldInput('body') ? form.oldInput('body') : post.body %></textarea>
+                                        <% if(form.hasError('body')){ %>
+                                            <%= form.getError('body') %> 
+                                        <% } %> 
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-4">
+                            <div class="form-group">
+                                <label for="img">Select image</label>
+                                <div class="image-select" data-target="img">
+                                    <i class="far fa-image"></i>
+                                </div>
+                                <input id="img" type="file" class="d-none" />
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </form>
+            </form>
+        </div>
+    </div>
+</div>
