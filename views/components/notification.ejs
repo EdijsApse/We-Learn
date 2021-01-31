@@ -1,0 +1,9 @@
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+    <i class="fas fa-times" data-dismiss="alert" aria-label="Close"></i>
+    <h6 class="notification-heading">Notification</h6>
+    <% if (error.length) { %>
+        <p><%= error %></p>
+    <% } else { %>
+        <p><%= success %></p>
+    <% } %>
+</div>

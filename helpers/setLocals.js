@@ -12,6 +12,7 @@ module.exports = (req, res, next) => {
     res.locals.form = new ExpressForm(inputs, errors);
     res.locals.user = req.user;
     res.locals.error = req.flash('error');
+    res.locals.success = req.flash('success');
     
     next();
 }

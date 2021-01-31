@@ -1,0 +1,47 @@
+.alert-warning {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    top: 10px;
+    left: 10px;
+    background-color: #FFF;
+    box-shadow: 0px 0px 3px 0px $closeWhite;
+    width: 350px;
+    max-width: 350px;
+    border: none;
+    padding: 1em;
+    z-index: 10000;
+    .notification-heading {
+        font-size: 1.4em;
+        color: $darkGrey;
+        margin-bottom: 0px;
+        &::after {
+            height: 3px;
+            border-radius: 4px;
+            width: 60px;
+            background-color: $skyBlue;
+            content: "";
+            display: block;
+            margin-bottom: 6px;
+            margin-top: 5px;
+        }
+    }
+    i {
+        position: absolute;
+        right: 10px;
+        top: 10px;
+        color: $brightGrey;
+        font-size: 1.2em;
+        transition: all 0.3s;
+        cursor: pointer;
+        &:hover {
+            color: $darkGrey;
+        }
+    }
+    p {
+        color: $darkGrey;
+        margin-right: 2em;
+        font-size: 1.2em;
+        margin-bottom: 0px;
+    }
+}

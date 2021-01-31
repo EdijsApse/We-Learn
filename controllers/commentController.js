@@ -5,6 +5,7 @@ const ExpressError = require('../helpers/ExpressError');
 module.exports.delete = async (req, res) => {
     const { id, post_id } = req.params;
     await Comment.findByIdAndDelete(id);
+    req.flash('success', 'Comment deleted');
     res.redirect(`/post/${post_id}`);
 }
 
@@ -30,6 +31,8 @@ module.exports.create = async (req, res) => {
 
     await post.save();
     await comment.save();
+
+    req.flash('success', 'Comment creted.');
 
     res.redirect(post.url);
 }

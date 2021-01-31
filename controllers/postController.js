@@ -8,6 +8,8 @@ module.exports.create = async (req, res) => {
     
     await post.save();
 
+    req.flash('success', 'Post created');
+
     res.redirect(post.url);
 }
 
@@ -36,6 +38,8 @@ module.exports.update = async (req, res) => {
 
     const post = await Post.findByIdAndUpdate(id, { body, title })
 
+    req.flash('success', 'Post updated');
+
     return res.redirect(post.url);
 }
 
@@ -43,6 +47,8 @@ module.exports.delete = async (req, res) => {
     const { id } = req.params;
     
     await Post.findByIdAndDelete(id);
+   
+    req.flash('success', 'Post deleted');
     
     return res.redirect('/post');
 }
