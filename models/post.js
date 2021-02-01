@@ -28,6 +28,10 @@ const postSchema = new mongoose.Schema({
     comments: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Comment'
+    }],
+    favorite: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User'
     }]
 });
 
@@ -58,6 +62,16 @@ postSchema.methods.isAuthor = function(user) {
 
     return this.user._id.equals(user._id);
 };
+
+postSchema.methods.canAddToFavorites = function(user) {
+    if (user) return !this.user._id.equals(user._id);
+
+    return false;
+}
+
+postSchema.methods.isFavorite = function(user) {
+    return this.favorite.find(fav => fav.equals(user._id));
+}
 
 postSchema.post('findOneAndDelete', async function(post) {
     await Comment.deleteMany({ post: post._id });

@@ -28,6 +28,27 @@
                                 </form>
                             </div>
                         <% } %>
+
+                        <% if (post.canAddToFavorites(user)) { %>
+                            <div class="d-flex justify-content-end favorite">
+
+                                <% if (post.isFavorite(user)) { %>
+                                    <form method="POST" action="<%= post.url %>/favorite-remove">
+                                        <button type="submit" class="btn btn-favorite is-favorite">
+                                            <%= post.favorite.length %>
+                                            <i class="fas fa-heart"></i>
+                                        </button>
+                                    </form>
+                                <% } else { %>
+                                    <form method="POST" action="<%= post.url %>/favorite">
+                                        <button type="submit" class="btn btn-favorite">
+                                            <%= post.favorite.length %>
+                                            <i class="fas fa-heart"></i>
+                                        </button>
+                                    </form>
+                                <% } %>
+                            </div>
+                        <% } %>
                     </div>
                 </div>
             </div>

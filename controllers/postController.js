@@ -70,3 +70,30 @@ module.exports.edit = async (req, res, next) => {
 
     res.render('post/update', {post});
 }
+
+module.exports.favorite = async (req, res) => {
+    const { id } = req.params;
+
+    await Post.findOneAndUpdate({_id: id}, {
+        $push: {
+            favorite: req.user._id
+        }
+    });
+
+    req.flash('success', 'Post added to favorite list');
+
+    res.redirect(`/post/${id}`);
+}
+
+module.exports.favoriteRemove = async (req, res) => {
+    const { id } = req.params;
+    await Post.findOneAndUpdate( {_id: id}, {
+        $pull: {
+            favorite: req.user._id
+        }
+    });
+
+    req.flash('success', 'Post removed from favorite list');
+
+    res.redirect(`/post/${id}`);
+}

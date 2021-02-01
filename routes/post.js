@@ -19,5 +19,11 @@ router.route('/:id')
 router.route('/:id/edit')
     .get(isAuth, catchAsyncError(postController.edit));
 
+router.route('/:id/favorite-remove')
+    .post(isAuth, catchAsyncError(postController.favoriteRemove));
+
+router.route('/:id/favorite')
+    .post(isAuth, catchAsyncError(postController.favorite));
+
 module.exports = router;
 

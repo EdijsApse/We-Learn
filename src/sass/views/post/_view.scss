@@ -43,6 +43,22 @@
                     font-size: 1.2em;
                 }
             }
+
+            .favorite {
+                .btn-favorite {
+                    padding: 0;
+                    background-color: #FFF;
+                    min-width: auto;
+                    font-size: 1.3em;
+                    color: $brightGrey;
+                    &.is-favorite {
+                        color: $skyBlue;
+                    }
+                    i {
+                        cursor: pointer;
+                    }
+                }
+            }
         }
     }
 
